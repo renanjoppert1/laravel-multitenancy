@@ -3,6 +3,7 @@
 namespace App\Http\Middleware\Tenant;
 
 use App\Models\Company;
+use App\Tenant\ManagerTenant;
 use Closure;
 
 class TenantMiddleware
@@ -20,10 +21,9 @@ class TenantMiddleware
         if( !$company = $this->getCompany($request->getHost()) ){
             echo 'Não foi possível acessar a aplicação para este domínio';
             http_response_code(404);
-            die();
         }
 
-
+        app(ManagerTenant::class)->setConnection($company);
 
         return $next($request);
     }
