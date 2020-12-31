@@ -17,13 +17,22 @@ class TenantMiddleware
      */
     public function handle($request, Closure $next)
     {
+        // Pega o domínio que está acessando a aplicação
+        $company = $this->getCompany($request->getHost());
 
-        if( !$company = $this->getCompany($request->getHost()) ){
-            echo 'Não foi possível acessar a aplicação para este domínio';
+        // se não achar um tenant com o domínio que está acessando e o domínio não for o master
+        // retornará erro 404
+        if (!$company && $request->getHost() != env('MAIN_DOMAIN')) {
             http_response_code(404);
+            header('Content-type: application/json');
+            echo '{"error": "Não foi possível acessar a aplicação para este domínio"}';
+            die();
         }
 
-        app(ManagerTenant::class)->setConnection($company);
+        // se não for o domínio master, ele trocará a conexão
+        if ($request->getHost() != env('MAIN_DOMAIN')) {
+            app(ManagerTenant::class)->setConnection($company);
+        }
 
         return $next($request);
     }
