@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Tenant;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 
 class CompanyController extends Controller
@@ -51,6 +52,10 @@ class CompanyController extends Controller
         DB::statement("
             CREATE DATABASE {$database_name} CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
         ");
+
+        Artisan::call('tenants:migration', [
+            'id' => $company->id
+        ]);
 
         return response()->json([
             'data' => $company
