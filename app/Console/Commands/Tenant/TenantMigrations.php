@@ -16,7 +16,7 @@ class TenantMigrations extends Command
      *
      * @var string
      */
-    protected $signature = 'tenants:migration {--refresh}';
+    protected $signature = 'tenants:migration {id?} {--refresh}';
 
     /**
      * The console command description.
@@ -46,7 +46,11 @@ class TenantMigrations extends Command
     {
         $command = $this->option('refresh')  ? 'migrate:refresh' : 'migrate';
 
-        $companies = Company::all();
+        if( $id = $this->argument('id') ){
+            $companies = Company::where('id', $id)->get();
+        }else{
+            $companies = Company::all();
+        }
 
         foreach ($companies as $company){
             $this->tenant->setConnection($company);
