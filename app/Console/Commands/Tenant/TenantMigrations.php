@@ -16,7 +16,7 @@ class TenantMigrations extends Command
      *
      * @var string
      */
-    protected $signature = 'tenants:migration';
+    protected $signature = 'tenants:migration {--refresh}';
 
     /**
      * The console command description.
@@ -44,6 +44,8 @@ class TenantMigrations extends Command
      */
     public function handle()
     {
+        $command = $this->option('refresh')  ? 'migrate:refresh' : 'migrate';
+
         $companies = Company::all();
 
         foreach ($companies as $company){
@@ -51,7 +53,7 @@ class TenantMigrations extends Command
 
             $this->info('Connecting Company ' . $company->name);
 
-            Artisan::call('migrate', [
+            Artisan::call($command, [
                 '--force' => true,
                 '--path' => '/database/migrations/tenant'
             ]);

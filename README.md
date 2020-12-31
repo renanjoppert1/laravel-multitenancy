@@ -9,7 +9,7 @@
 
 ## Commands Laravel
 <pre>
-php artisan tenants:migration # Roda migration para tenants
+php artisan tenants:migration {--refresh} # Roda migration para tenants
 </pre>
 
 ## About Laravel
