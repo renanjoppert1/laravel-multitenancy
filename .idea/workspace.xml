@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="8a433f65-a75c-4d57-9a0a-440f3cca104a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Tenant/CompanyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Tenant/CompanyController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Post.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/tenant/2020_12_30_235153_create_posts_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +199,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1609366314697</updated>
-      <workItem from="1609366321395" duration="14211000" />
+      <workItem from="1609366321395" duration="15073000" />
     </task>
     <task id="LOCAL-00001" summary="Commit inicial">
       <created>1609366973176</created>
@@ -379,7 +383,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609383171122</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Último commit">
+      <created>1609383422566</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1609383422566</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -397,7 +408,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Exclusão do /.idea" />
     <MESSAGE value="Alteração de diretório da model Users" />
     <MESSAGE value="Configuração do webservice provider para strings no db terem 191 caracteres" />
     <MESSAGE value="Criação da Model Company" />
@@ -422,6 +432,7 @@
     <MESSAGE value="Cadastro de Empresa" />
     <MESSAGE value="Criando o database" />
     <MESSAGE value="Rodando o tenants:migration no banco de dados criado" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rodando o tenants:migration no banco de dados criado" />
+    <MESSAGE value="Último commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Último commit" />
   </component>
 </project>
