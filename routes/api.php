@@ -14,6 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+// domínio principal
+Route::domain(env('MAIN_DOMAIN', 'master.guiador.digital'))->group(function () {
+    Route::get('/', function (){
+        echo 'oi master';
+    });
+});
+
+// subdomínios
+Route::domain('{account}.' . env('APP_URL_BASE'))->group(function () {
+    Route::get('/', function ($account){
+        echo 'Oi ' . $account;
+    });
 });
