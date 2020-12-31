@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Tenant;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CompanyController extends Controller
 {
@@ -35,16 +36,21 @@ class CompanyController extends Controller
     {
 
         $domain = md5(date('Y-m-d H:i:s')) . '.' . env('APP_URL_BASE');
+        $database_name = env('DB_TENANT_PREFIX') . md5(date('Y-m-d H:i:s'));
 
         $company = $this->company->create([
             "name" => 'Empresa X',
             "domain" => $domain,
-            "db_database" => md5(date('Y-m-d H:i:s')),
+            "db_database" => $database_name,
             "db_username" => 'root',
             "db_password" => '',
             "db_hostname" => 'localhost'
 
         ]);
+
+        DB::statement("
+            CREATE DATABASE {$database_name} CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
+        ");
 
         return response()->json([
             'data' => $company
