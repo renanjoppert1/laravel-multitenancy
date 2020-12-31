@@ -16,9 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 // domínio principal
 Route::domain(env('MAIN_DOMAIN', 'master.guiador.digital'))->group(function () {
-    Route::get('/', function (){
-        echo 'oi master';
-    });
+
+    Route::apiResource('/empresas', 'Tenant\CompanyController');
 });
 
 // subdomínios
